@@ -1,0 +1,35 @@
+Para el manejo de rutas se debe hacer el siguiente import en el modulo principal
+    import {RouterModule} from '@angular/router'
+
+Para la creacion de rutas se debe hacer el siguiente import en el archivo de rutas de la aplicacion
+    import { Routes } from '@angular/router'
+
+Redireccion de rutas en el html
+    routerLinkActive="active" -----------------------> Dentro del html para que se ilumine el boton de la seccion en la cual estamos
+    routerLink="home" ------------------------------> Para indicar hacia cual iremos
+
+PETICIONES HTTP
+    Se debe debe hacer el siguiente import en el modulo principal
+        import {HttpClientModule} from '@angular/common/http
+
+    Se debe hacer el siguiente import en el modulo el cual sera cliente de la peticion
+        import { HttpClient } from '@angular/common/http';
+    de la siguiente forma se realiza la peticion
+        this.http.get("https://restcountries.eu/rest/v2/lang/es")
+        .subscribe( (data:any) => {
+          this.paises = data
+          console.log()
+        })
+
+    CASO IMPORTANTE
+    En el caso de que la peticion que se desea realizar necesita headers se deben agregar a la peticion de la siguiente forma
+            const headers = new HttpHeaders({
+            "Authorization": "Bearer BQBOwTnLHH-SsIroDLPc9gNdyGOJJTSlUoNtVJtuR-VlJwPVjogHhGE8PKi95ylO8NlTFA7Qh51b8Q_ok8q7Is7fQs8MuCKiwuFE5rRu6Vsn29u1m5PWLMpCP5jpru4fVh2mxmZ93EMnBiR7RSQB0s3yGSv7TeMn4ZY"
+            })
+
+
+            this.http.get("https://api.spotify.com/v1/browse/new-releases", {headers})
+                .subscribe((data:any) => {
+                console.log(data)
+                })
+        
