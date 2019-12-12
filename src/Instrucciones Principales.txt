@@ -32,4 +32,31 @@ PETICIONES HTTP
                 .subscribe((data:any) => {
                 console.log(data)
                 })
+
+Operador MAP
+    Este operador transforma los datos que llegan en el que se necesita, este es un ejemplo de como usar el
+    map
+    return this.getQuery(`browse/new-releases?limit=20`) 
+        .pipe(map(data => data["albums"].items))
+        
+
+Enviando informacion por URL
+    Primeramente se debe realizar el siguiente import import {Router} from '@angular/router'
+    Despues se debe inyectar en la clase como se ha venido realizando
+    La ruta debe estar definida en el archivo de rutas, indicando que se le pasara un parametro por url
+    this.router.navigate(['/artist', artistId])
+
+
+Obtener informacion de la URL
+    Primeramente se debe importar import {ActivatedRoute} from '@angular/router' en el modulo que se desea obtener el valor
+    Despues se debe inyectar en la clase como se ha venido realizando
+    this.activated_router.params.subscribe( params => {
+      this.artistId = params['id']
+    })
+
+Uso del pipe dom seguro para agregar informacion a parametros con peticiones get
+    'item.uri | domseguro :'https://open.spotify.com/embed?uri='
+Pasamos por el pipe el item.uri y el pipe dom seguro verifica que no sea malicioso y lo concatena a la cadena
+que se enviar por la peticion GET
+    
         
